@@ -1,0 +1,22 @@
+{
+    "name": "clippings/html5-sortable",
+    "description": "Sort element using native html5 drag and drop",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Ivan Kerin",
+            "email": "ikerin@gmail.com",
+            "role": "Author"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CL\\Sortable\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CL\\Sortable\\Test\\": "tests/src/"
+        }
+    }
+}
