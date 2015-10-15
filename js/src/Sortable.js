@@ -36,12 +36,6 @@ var Sortable = (function ($) {
         ITEM      : '[data-arrange="html5-sortable"] > [draggable]'
     }
 
-    var Default = {
-        resize: true,
-        overlap: false,
-        compact: true
-    }
-
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -53,8 +47,7 @@ var Sortable = (function ($) {
      */
     function Sortable(element) {
         this.$element = $(element)
-        this.$mask    = $([])
-        this.$ghost   = $([])
+        this.$cursor  = $([])
     }
 
     // getters
@@ -69,83 +62,37 @@ var Sortable = (function ($) {
      * Clear artefacts like mask and ghost and update
      */
     Sortable.prototype.end = function () {
-        this._removeMask()
-        this._removeGhost()
+        this.$cursor.removeClass('sortable-ghost')
     }
 
-    // private
-    // ------------------------------------------------------------------------
+    /**
+     * Move the ghost element of a widget inside the grid.
+     * Pass a mouse x and y coords, relative to the grid
+     *
+     * @param  {jQuery} $cursor
+     */
+    Sortable.prototype.cursor = function ($cursor) {
+        this.end()
+        this.$cursor = $cursor.addClass('sortable-ghost')
+    }
 
     /**
      * Move the ghost element of a widget inside the grid.
      * Pass a mouse x and y coords, relative to the grid
      *
      * @param  {jQuery} $widget
-     * @param  {Number} mouseX
-     * @param  {Number} mouseY
+     * @param  {jQuery} $cursor
      */
-    Sortable.prototype._moveGhost = function ($widget, mouseX, mouseY) {
-        var $oldGhost = this.$ghost
-
-        this.$ghost = this.$element.children('[draggable]').filter(function () {
-            var $child = $(this)
-
-            return mouseX >= $child.position().left
-                && mouseX <= $child.position().left + $child.width()
-                && mouseY >= $child.position().top
-                && mouseY <= $child.position().top + $child.height()
-        })
-
-        $oldGhost.removeClass('sortable-ghost')
-        this.$ghost.addClass('sortable-ghost')
-    }
-
-    /**
-     * Remove the ghost element for this grid
-     *
-     * @param  {jQuery} $widget
-     */
-    Sortable.prototype._removeGhost = function () {
-        if (this.$ghost.length) {
-            this.$ghost.removeClass('sortable-ghost')
-        }
-    }
-
-    /**
-     * Move the widget to its corresponding ghost position
-     *
-     * @param  {jQuery} $widget
-     */
-    Sortable.prototype._moveToGhost = function ($widget) {
-        if (this.$ghost.index() > $widget.index()) {
-            $widget.insertAfter(this.$ghost)
+    Sortable.prototype.reposition = function ($widget, $cursor) {
+        if ($cursor.index() > $widget.index()) {
+            $widget.insertAfter($cursor)
         } else {
-            $widget.insertBefore(this.$ghost)
+            $widget.insertBefore($cursor)
         }
     }
 
-    /**
-     * Get the mask of the grid. Create one if there is none.
-     *
-     * @return {jQuery}
-     */
-    Sortable.prototype._getMask = function () {
-        if (this.$mask.length) {
-            this.$mask = $('<div class="sortable-mask" data-html5-sortable="mask"></div>')
-            this.$element.append(this.$mask)
-        }
-
-        return this.$mask
-    }
-
-    /**
-     * Remove the mask
-     */
-    Sortable.prototype._removeMask = function () {
-        if (this.$mask.length) {
-            this.$mask.remove()
-        }
-    }
+    // private
+    // ------------------------------------------------------------------------
 
     // static
 
@@ -176,21 +123,15 @@ var Sortable = (function ($) {
             Store.set(event.originalEvent, this)
         })
 
-        .on(Event.OVER, Selector.CONTAINER, function (event) {
-            var original = event.originalEvent
-            var $widget = $(Store.get(original))
+        .on(Event.OVER, Selector.ITEM, function (event) {
+            var $widget = $(Store.get(event.originalEvent))
+            var $this = $(this)
+            var $sortable = $this.parent()
 
             if ($widget.length) {
-                var pos = original.touches ? original.touches[0] : original
-                var $this = $(this)
-                var mouseX = pos.pageX - $this.offset().left
-                var mouseY = pos.pageY - $this.offset().top
-                var container = $this[NAME]().data(DATA_KEY)
-
                 event.preventDefault()
 
-                container._getMask()
-                container._moveGhost($widget, mouseX, mouseY)
+                $sortable[NAME]('cursor', $this)
             }
         })
 
@@ -199,24 +140,22 @@ var Sortable = (function ($) {
         })
 
         .on(Event.LEAVE, Selector.CONTAINER, function (event) {
-            event.preventDefault()
-
-            if ($(event.target).data('html5-sortable') === 'mask') {
+            if ($(event.target).is(Selector.ITEM)) {
+                event.preventDefault()
                 $(this)[NAME]('end')
             }
         })
 
-        .on(Event.DROP, Selector.CONTAINER, function (event) {
+        .on(Event.DROP, Selector.ITEM, function (event) {
             var $widget = $(Store.get(event.originalEvent))
 
             if ($widget.length) {
                 var $this = $(this)
-                var container = $this[NAME]().data(DATA_KEY)
+                var $sortable = $this.parent()
 
                 event.preventDefault()
 
-                container._moveToGhost($widget)
-                container.end()
+                $(this)[NAME]('reposition', $widget, $this)
             }
         })
 
