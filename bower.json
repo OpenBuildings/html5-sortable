@@ -1,0 +1,32 @@
+{
+  "name": "clippings-html5-sortable",
+  "homepage": "https://clippings/github.com/html5-sortable",
+  "version": "1.0.0",
+  "authors": [
+    "Ivan Kerin <ikerin@gmail.com>"
+  ],
+  "description": "Sort element using native html5 drag and drop",
+  "main": [
+    "js/html5-sortable.min.js",
+    "sass/html5-sortable.sass"
+  ],
+  "moduleType": "globals",
+  "keywords": [
+    "sortable",
+    "drag-n-drop",
+    "native"
+  ],
+  "license": "BSD-3-Clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "examples",
+    ".sass-cache",
+    "Gruntfile.js",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.7.0"
+  }
+}
