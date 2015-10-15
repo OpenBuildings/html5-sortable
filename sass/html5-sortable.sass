@@ -1,0 +1,35 @@
+/**
+ * Styles specific to the ordering process
+ */
+.sortable-ghost
+    position: relative
+
+    &:after
+        display: block
+        content: ''
+        position: absolute
+        left: 0
+        right: 0
+        top: 0
+        bottom: 0
+        border: 2px dashed #AAA
+
+tr, td, th
+    &.sortable-ghost
+        border: 2px dashed #AAA
+        &:after
+            display: none
+
+.sortable-container
+    position: relative
+
+.sortable-mask
+    display: block
+    border: 1px solid #AAA
+    position: absolute
+    z-index: 3
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+

@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Layout Grid Tests</title>
+
+  <link type="text/css" rel="stylesheet" href="../../node_modules/qunitjs/qunit/qunit.css">
+</head>
+<body>
+
+<div id="qunit"></div>
+<div id="qunit-fixture">
+    <div
+     id="container1"
+     data-arrange="html5-sortable"
+     class="sortable-container row">
+
+        <div
+         id="item1"
+         draggable="true"
+         class="sortable-item col-sm-3">
+            <div class="embed-responsive embed-responsive-16by9">
+                <div class="bg-info text-center embed-responsive-item">
+                    <h3>1</h3>
+                </div>
+            </div>
+        </div>
+
+        <div
+         id="item2"
+         draggable="true"
+         class="sortable-item col-sm-3">
+            <div class="embed-responsive embed-responsive-16by9">
+                <div class="bg-info text-center embed-responsive-item">
+                    <h3>2</h3>
+                </div>
+            </div>
+        </div>
+
+        <div
+         draggable="true"
+         class="other-item sortable-item col-sm-3">
+            <div class="embed-responsive embed-responsive-16by9">
+                <div class="bg-info text-center embed-responsive-item">
+                    <h3>3</h3>
+                </div>
+            </div>
+        </div>
+
+        <div
+         draggable="true"
+         class="sortable-item col-sm-3">
+            <div class="embed-responsive embed-responsive-16by9">
+                <div class="bg-info text-center embed-responsive-item">
+                    <h3>4</h3>
+                </div>
+            </div>
+        </div>
+
+        <div
+         draggable="true"
+         class="sortable-item col-sm-3">
+            <div class="embed-responsive embed-responsive-16by9">
+                <div class="bg-info text-center embed-responsive-item">
+                    <h3>5</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../../node_modules/qunitjs/qunit/qunit.js"></script>
+
+<!-- Sources -->
+<script type="text/javascript" src='../src/Sortable.js'></script>
+<script type="text/javascript" src='../src/Store.js'></script>
+
+<!-- Unit tests -->
+<script type="text/javascript" src='unit/Sortable.js'></script>
+<script type="text/javascript" src='unit/Store.js'></script>
+
+</body>
+</html>

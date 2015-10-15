@@ -1,0 +1,40 @@
+{
+  "name": "html5-sortable",
+  "license": "BSD-3-Clause",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "^1.7, ^2.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clippings/html5-sortable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/clippings/html5-sortable/issues"
+  },
+  "main": "dist/js/html5-sortable",
+  "jspm": {
+    "format": "global",
+    "shim": {
+      "dist/js/html5-sortable": ["jquery"]
+    }
+  },
+  "homepage": "https://clippings.github.com/html5-sortable",
+  "devDependencies": {
+    "codeclimate-test-reporter": "^0.1.0",
+    "grunt": "^0.4.1",
+    "grunt-contrib-compress": "^0.13.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "^0.13.0",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-eslint": "^17.1.0",
+    "grunt-jscs": "~1.8.0",
+    "grunt-qunit-istanbul": "^0.5.0",
+    "grunt-sass": "^1.0.0",
+    "load-grunt-tasks": "^3.2.0",
+    "qunitjs": "^1.19.0"
+  }
+}
