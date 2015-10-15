@@ -36,6 +36,8 @@ var Sortable = (function ($) {
         ITEM      : '[data-arrange="html5-sortable"] > [draggable]'
     }
 
+    var Cursor = 'sortable-cursor'
+
     /**
      * ------------------------------------------------------------------------
      * Class Definition
@@ -62,7 +64,7 @@ var Sortable = (function ($) {
      * Clear artefacts like mask and ghost and update
      */
     Sortable.prototype.end = function () {
-        this.$cursor.removeClass('sortable-ghost')
+        this.$cursor.removeClass(Cursor)
     }
 
     /**
@@ -73,7 +75,7 @@ var Sortable = (function ($) {
      */
     Sortable.prototype.cursor = function ($cursor) {
         this.end()
-        this.$cursor = $cursor.addClass('sortable-ghost')
+        this.$cursor = $cursor.addClass(Cursor)
     }
 
     /**
@@ -84,7 +86,7 @@ var Sortable = (function ($) {
      * @param  {jQuery} $cursor
      */
     Sortable.prototype.reposition = function ($widget, $cursor) {
-        if ($cursor.index() > $widget.index()) {
+        if ($cursor.parent().is($widget.parent()) && $cursor.index() > $widget.index()) {
             $widget.insertAfter($cursor)
         } else {
             $widget.insertBefore($cursor)
@@ -155,7 +157,7 @@ var Sortable = (function ($) {
 
                 event.preventDefault()
 
-                $(this)[NAME]('reposition', $widget, $this)
+                $sortable[NAME]('reposition', $widget, $this)
             }
         })
 

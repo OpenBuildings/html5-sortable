@@ -14,7 +14,7 @@ $(function () {
 
         assert.equal(Store.getId(rect1), 'item1')
         assert.equal(Store.getId(rect2), 'item2')
-        assert.ok(Store.getId(div3).match(/html5-sortable-\d+/))
+        assert.ok(Store.getId(div3).match(/draggable-\d+/))
     })
 
     QUnit.test('set and get', function (assert) {
@@ -53,7 +53,7 @@ $(function () {
         assert.deepEqual(item, loaded)
 
         assert.equal(event.dataTransfer.type, 'text')
-        assert.equal(event.dataTransfer.data, '{"Html5Sortable":"item1"}')
+        assert.equal(event.dataTransfer.data, '{"Draggable":"item1"}')
     })
 
 

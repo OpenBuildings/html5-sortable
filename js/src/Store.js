@@ -36,7 +36,7 @@ var Store = (function () {
      */
     Store.getId = function (item) {
         if (!item.id) {
-            item.id = 'html5-sortable-' + this.getRandomNumber()
+            item.id = 'draggable-' + this.getRandomNumber()
         }
 
         return item.id
@@ -58,7 +58,7 @@ var Store = (function () {
     Store.set = function (event, item) {
 
         this.item = JSON.stringify({
-            Html5Sortable: this.getId(item)
+            Draggable: this.getId(item)
         })
 
         if (event.dataTransfer) {
@@ -77,7 +77,7 @@ var Store = (function () {
 
         if (dataString) {
             var data = JSON.parse(dataString)
-            return document.getElementById(data.Html5Sortable)
+            return document.getElementById(data.Draggable)
         }
     }
 
