@@ -131,4 +131,75 @@ $(function () {
         assert.equal(sortable.options().cursor, '.third-cursor', 'Match the changed option for cursor')
     })
 
+    QUnit.test('Events', function (assert) {
+        var dragstart = $.Event('dragstart' + Sortable.EVENT_KEY, {
+            originalEvent: {
+                dataTransfer: null
+            }
+        })
+
+        var dragover = $.Event('dragover' + Sortable.EVENT_KEY, {
+            originalEvent: {
+                dataTransfer: null
+            }
+        })
+
+        var dragoverTouch = $.Event('touchmove' + Sortable.EVENT_KEY, {
+            originalEvent: {
+                dataTransfer: null
+            }
+        })
+
+        var drop = $.Event('drop' + Sortable.EVENT_KEY, {
+            originalEvent: {
+                dataTransfer: null
+            }
+        })
+
+        var dragleave = $.Event('dragleave' + Sortable.EVENT_KEY, {
+            originalEvent: {
+                dataTransfer: null
+            }
+        })
+
+        var dragend = $.Event('dragend' + Sortable.EVENT_KEY, {
+            originalEvent: {
+                dataTransfer: null
+            }
+        })
+
+        $('#container1').html5Sortable()
+
+        $('#item1').trigger(dragstart)
+        $('#item2').trigger(dragover)
+
+        assert.ok($('#item2').hasClass('sortable-cursor'))
+
+        dragleave.target = $('#item2 div')[0]
+        $('#item2 div').trigger(dragleave)
+
+        assert.ok($('#item2').hasClass('sortable-cursor'))
+
+        dragleave.target = $('#item2')[0]
+        $('#item2').trigger(dragleave)
+
+        assert.notOk($('#item2').hasClass('sortable-cursor'))
+
+        $('#item2').trigger(dragoverTouch)
+
+        $('#item2').trigger(drop)
+
+        assert.ok($('#item1').index() === 1, 'Item1 repositioned to is 1')
+        assert.ok($('#item2').index() === 0, 'Item2 repositioned to is 0')
+
+        $('#item2').trigger(dragend)
+
+        assert.ok($('#container1 .sortable-cursor').length === 0)
+
+        Store.clear()
+
+        $('#item2').trigger(dragover)
+        $('#item2').trigger(drop)
+    })
+
 })

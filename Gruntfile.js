@@ -62,7 +62,7 @@ module.exports = function (grunt) {
         qunit: {
             options: {
                 coverage: {
-                    src: ['dist/js/<%= pkg.name %>.js'],
+                    src: 'js/src/*.js',
                     instrumentedFiles: 'temp/',
                     htmlReport: 'build/coverage',
                     lcovReport: 'build/'
