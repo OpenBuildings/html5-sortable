@@ -1,10 +1,11 @@
-/* =================================================================================
- * Layout Grid
- * http://github.com/clippings/layout-grid
- * =================================================================================
+/* ----
+ * Html5 Sortable
+ * http://github.com/clippings/html5-sortable
+ * ----
  * Copyright 2015 Clippings Ltd.
- * Licensed under BSD (https://github.com/clippings/layout-grid/blob/master/LICENSE)
- * ================================================================================= */
+ * Licensed under BSD (https://github.com/clippings/html5-sortable/blob/master/LICENSE)
+ * ----
+ */
 
 /* exported Store */
 
