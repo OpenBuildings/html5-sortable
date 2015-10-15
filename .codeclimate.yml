@@ -1,2 +1,7 @@
-languages:
-   JavaScript: true
+engines:
+  eslint:
+    enabled: true
+ratings:
+  paths:
+  - "js/**.js"
+exclude_paths: []
