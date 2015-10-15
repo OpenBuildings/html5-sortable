@@ -1,21 +1,18 @@
 Html5 Sortable
 ==============
 
-[![Build Status](https://travis-ci.org/clippings/html5-sortable.png?branch=master)](https://travis-ci.org/clippings/html5-sortable)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/clippings/html5-sortable/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/clippings/html5-sortable/)
-[![Code Coverage](https://scrutinizer-ci.com/g/clippings/html5-sortable/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/clippings/html5-sortable/)
-[![Latest Stable Version](https://poser.pugx.org/clippings/html5-sortable/v/stable.png)](https://packagist.org/packages/clippings/html5-sortable)
+[![Build Status](https://travis-ci.org/clippings/html5-sortable.svg?branch=master)](https://travis-ci.org/clippings/html5-sortable)
+[![Code Climate](https://codeclimate.com/github/clippings/html5-sortable/badges/gpa.svg)](https://codeclimate.com/github/clippings/html5-sortable)
+[![Test Coverage](https://codeclimate.com/github/clippings/html5-sortable/badges/coverage.svg)](https://codeclimate.com/github/clippings/html5-sortable/coverage)
+
 
 Sort element using native html5 drag and drop
 
 Instalation
 -----------
 
-Install via composer
-
-```
-composer require clippings/html5-sortable
-```
+Include javascript file `dist/js/layout-grid.min.js`
+For default css include `dist/js/layout-grid.min.css`, but you can modify this or make your own one
 
 Usage
 -----

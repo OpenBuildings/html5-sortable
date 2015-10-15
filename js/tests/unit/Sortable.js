@@ -113,11 +113,6 @@ $(function () {
     QUnit.test('Constructor with custom options and modifiable options', function (assert) {
         var $container = $('#container1')
 
-        var expectedParams = {
-            field: '.field',
-            cursor: '.other-cursor'
-        }
-
         $container.html5Sortable({
             arrange: 'html5-sortable',
             field: '.field',

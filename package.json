@@ -22,7 +22,7 @@
       "dist/js/html5-sortable": ["jquery"]
     }
   },
-  "homepage": "https://clippings.github.com/html5-sortable",
+  "homepage": "https://github.com/clippings/html5-sortable",
   "devDependencies": {
     "codeclimate-test-reporter": "^0.1.0",
     "grunt": "^0.4.1",
