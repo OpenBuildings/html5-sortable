@@ -20,15 +20,16 @@ var Sortable = (function ($) {
      */
 
     var NAME                = 'html5Sortable'
-    var DATA_KEY            = 'html5.sortable'
+    var DATA_KEY            = 'html5-sortable'
     var EVENT_KEY           = '.' + DATA_KEY
 
     var Event = {
-        START   : 'dragstart.' + EVENT_KEY + ' touchstart. ' + EVENT_KEY,
-        OVER    : 'dragover.' + EVENT_KEY + ' touchmove. ' + EVENT_KEY,
-        END     : 'dragend.' + EVENT_KEY + ' touchcancel. ' + EVENT_KEY,
-        DROP    : 'drop.' + EVENT_KEY + ' touchend. ' + EVENT_KEY,
-        LEAVE   : 'dragleave.' + EVENT_KEY
+        START   : 'dragstart' + EVENT_KEY + ' touchstart ' + EVENT_KEY,
+        OVER    : 'dragover' + EVENT_KEY + ' touchmove ' + EVENT_KEY,
+        END     : 'dragend' + EVENT_KEY + ' touchcancel ' + EVENT_KEY,
+        DROP    : 'drop' + EVENT_KEY + ' touchend ' + EVENT_KEY,
+        LEAVE   : 'dragleave' + EVENT_KEY,
+        SORT    : 'sort'
     }
 
     var Selector = {
@@ -36,7 +37,10 @@ var Sortable = (function ($) {
         ITEM      : '[data-arrange="html5-sortable"] > [draggable]'
     }
 
-    var Cursor = 'sortable-cursor'
+    var Default = {
+        cursor: 'sortable-cursor',
+        field: false
+    }
 
     /**
      * ------------------------------------------------------------------------
@@ -46,9 +50,11 @@ var Sortable = (function ($) {
 
     /**
      * @param  {jQuery} element
+     * @param  {Object} options
      */
-    function Sortable(element) {
+    function Sortable(element, options) {
         this.$element = $(element)
+        this._options  = this._getOptions(options || {})
         this.$cursor  = $([])
     }
 
@@ -60,27 +66,43 @@ var Sortable = (function ($) {
 
     Sortable.EVENT_KEY = EVENT_KEY
 
+    Sortable.Default = Default
+
+    Sortable.prototype.options = function () {
+        return this._options
+    }
+
+    // public
+
     /**
-     * Clear artefacts like mask and ghost and update
+     * Update an option directly
+     *
+     * @param  {String} name
+     * @param  {mixed} value
      */
-    Sortable.prototype.end = function () {
-        this.$cursor.removeClass(Cursor)
+    Sortable.prototype.option = function (name, value) {
+        this._options[name] = value
     }
 
     /**
-     * Move the ghost element of a widget inside the grid.
-     * Pass a mouse x and y coords, relative to the grid
+     * Clear cursor
+     */
+    Sortable.prototype.end = function () {
+        this.$cursor.removeClass(this._options.cursor)
+    }
+
+    /**
+     * Set an item to be the current "cursor"
      *
      * @param  {jQuery} $cursor
      */
     Sortable.prototype.cursor = function ($cursor) {
         this.end()
-        this.$cursor = $cursor.addClass(Cursor)
+        this.$cursor = $cursor.addClass(this._options.cursor)
     }
 
     /**
-     * Move the ghost element of a widget inside the grid.
-     * Pass a mouse x and y coords, relative to the grid
+     * Swap two elements, trigger sort event and update field values
      *
      * @param  {jQuery} $widget
      * @param  {jQuery} $cursor
@@ -91,10 +113,31 @@ var Sortable = (function ($) {
         } else {
             $widget.insertBefore($cursor)
         }
+
+        $widget.parent().trigger(Event.SORT, [$widget, $cursor])
+
+        this.update()
+    }
+
+    /**
+     * Update all sortable field values
+     */
+    Sortable.prototype.update = function () {
+        var field = this._options.field
+
+        if (field) {
+            this.$element.children('[draggable]').each(function () {
+                $(this).find(field).val($(this).index())
+            })
+        }
     }
 
     // private
     // ------------------------------------------------------------------------
+
+    Sortable.prototype._getOptions = function (options) {
+        return $.extend(true, {}, Default, options)
+    }
 
     // static
 
@@ -102,9 +145,16 @@ var Sortable = (function ($) {
         return this.each(function () {
             var $this   = $(this)
             var data    = $this.data(DATA_KEY)
+            var _config = $.extend(
+                true,
+                {},
+                Default,
+                $this.data(),
+                typeof config === 'object' && config
+            )
 
             if (!data) {
-                data = new Sortable(this)
+                data = new Sortable(this, _config)
                 $this.data(DATA_KEY, data)
             }
 
