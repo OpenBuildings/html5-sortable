@@ -54,9 +54,9 @@ $(function () {
         var sortable = new Sortable($('#container1'))
         var done = assert.async()
 
-        $('#container1').on('sort', function (event, $moved, $old) {
-            assert.ok($moved.is('#item1'))
-            assert.ok($old.is('#item2'))
+        $('#container1').on('sort', function (event, $cursor) {
+            assert.ok($(event.target).is('#item'))
+            assert.ok($cursor.is('#item2'))
             done()
         })
 

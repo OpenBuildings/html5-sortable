@@ -3,4 +3,6 @@
 .sass-cache
 /node_modules/
 /dist/
+/temp/
+/docs/build/
 html5-sortable.zip

@@ -114,7 +114,7 @@ var Sortable = (function ($) {
             $widget.insertBefore($cursor)
         }
 
-        $widget.parent().trigger(Event.SORT, [$widget, $cursor])
+        $widget.trigger(Event.SORT, [$cursor])
 
         this.update()
     }

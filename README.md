@@ -13,7 +13,7 @@ Instalation
 
 Include javascript file `dist/js/layout-grid.min.js`
 
-For default css include `dist/js/layout-grid.min.css`, but you can modify this or make your own one
+For default css include `dist/css/layout-grid.min.css`, but you can modify this or make your own one
 
 Usage
 -----
