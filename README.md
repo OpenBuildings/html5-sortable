@@ -21,8 +21,8 @@ Manual:
 Download [latest release](https://github.com/clippings/html5-sortable/releases/latest)
 
 ``` html
-<link rel="stylesheet" type="text/css" href="dist/css/html5-sortable.min.css" />
-<script type="text/javascript" src="dist/js/html5-sortable.min.js"></script>
+<link rel="stylesheet" type="text/css" href="dist/css/clippings-html5-sortable.min.css" />
+<script type="text/javascript" src="dist/js/clippings-html5-sortable.min.js"></script>
 ```
 
 Usage
@@ -38,7 +38,7 @@ Usage
 </div>
 ```
 
-![Html5 draggable example](http://imgur.com/3A9mPOG)
+[Imgur](http://i.imgur.com/3A9mPOG.png)
 
 Documentation
 -------------

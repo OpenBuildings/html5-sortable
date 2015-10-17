@@ -7,7 +7,7 @@ Html5 Sortable Documentation
 
 This jQuery plugin allows sorting out a list of elements using native HTML5 drag-n-drop. It supports mobile devices natively with touch events.
 
-With only a minimal marckup and using only the built in `drag and drop <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_and_drop />`_ of browsers (`Supported in IE 8+ <http://caniuse.com/#feat=dragndrop/>`_)
+With only a minimal marckup and using only the built in `drag and drop <https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Drag_and_drop />`_ of browsers (`Supported in IE 8+ <http://caniuse.com/#feat=dragndrop/>`_). Only 2.5 KB file.
 
 .. code-block:: html
 
@@ -88,13 +88,22 @@ And here is how this will look in action:
         </div>
     </div>
 
-
 Instalation
 -----------
 
 Download the `latest release <https://github.com/clippings/html5-sortable/releases/latest />`_ and use the ``html5-sortable.js``.
 
 Default styles can be found in ``html5-sortable.css``, though they are only for styling the cursor.
+
+Contributing
+------------
+
+You can run the tests with "npm test", after you've run "npm install" to get all the requirements.
+All the tests, linters and style checks will be run on CI server for your pull requests automatically.
+
+You can read the source code at github.
+[clippings/html5-sortable](https://github.com/clippings/html5-sortable)
+
 
 Options
 -------
