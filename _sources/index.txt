@@ -92,7 +92,7 @@ And here is how this will look in action:
 Instalation
 -----------
 
-Download the `latest release <https://github.com/clippings/layout-grid/releases/latest />`_ and use the ``html5-sortable.js``.
+Download the `latest release <https://github.com/clippings/html5-sortable/releases/latest />`_ and use the ``html5-sortable.js``.
 
 Default styles can be found in ``html5-sortable.css``, though they are only for styling the cursor.
 
