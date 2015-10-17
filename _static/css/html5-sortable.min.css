@@ -1,0 +1,2 @@
+.sortable-cursor:after,td.sortable-cursor,th.sortable-cursor,tr.sortable-cursor{border:2px dashed #AAA}.sortable-cursor{position:relative}.sortable-cursor:after{display:block;content:'';position:absolute;left:0;right:0;top:0;bottom:0}td.sortable-cursor:after,th.sortable-cursor:after,tr.sortable-cursor:after{display:none}
+/*# sourceMappingURL=html5-sortable.min.css.map */

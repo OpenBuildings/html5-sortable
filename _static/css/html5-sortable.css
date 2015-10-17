@@ -1,0 +1,26 @@
+/* ----
+ * Html5 Sortable
+ * http://github.com/clippings/html5-sortable
+ * ----
+ * Copyright 2015 Clippings Ltd.
+ * Licensed under BSD (https://github.com/clippings/html5-sortable/blob/master/LICENSE)
+ * ----
+ */
+.sortable-cursor {
+  position: relative; }
+  .sortable-cursor:after {
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 2px dashed #AAA; }
+
+tr.sortable-cursor, td.sortable-cursor, th.sortable-cursor {
+  border: 2px dashed #AAA; }
+  tr.sortable-cursor:after, td.sortable-cursor:after, th.sortable-cursor:after {
+    display: none; }
+
+/*# sourceMappingURL=html5-sortable.css.map */
