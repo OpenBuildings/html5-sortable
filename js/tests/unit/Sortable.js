@@ -35,7 +35,7 @@ $(function () {
             return parseInt(item.value, 10)
         })
 
-        assert.deepEqual(values, [10, 2, 2, 3, 4], 'Should remain the same')
+        assert.deepEqual(values, [10, 2, 2, 3, 4], 'Field values should remain the same')
     })
 
     QUnit.test('cursor method', function (assert) {
@@ -55,8 +55,14 @@ $(function () {
         var done = assert.async()
 
         $('#container1').on('sort', function (event, $cursor) {
-            assert.ok($(event.target).is('#item'))
-            assert.ok($cursor.is('#item2'))
+            assert.ok(
+                $(event.target).is('#item1'),
+                'Event target should be item1'
+            )
+            assert.ok(
+                $cursor.is('#item2'),
+                'Cursor should be item2'
+            )
             done()
         })
 
@@ -86,11 +92,17 @@ $(function () {
 
         sortable.cursor($('#item1'))
 
-        assert.ok($('#container1').find('.sortable-cursor').length === 1, 'Cursor is visible')
+        assert.ok(
+            $('#container1').find('.sortable-cursor').length === 1,
+            'Cursor should be visible initially'
+        )
 
         sortable.end()
 
-        assert.ok($('#container1').find('.sortable-ghost').length === 0, 'Cursor is removed')
+        assert.ok(
+            $('#container1').find('.sortable-ghost').length === 0,
+            'Cursor should be removed'
+        )
     })
 
     QUnit.test('Constructor with default options', function (assert) {
@@ -173,17 +185,26 @@ $(function () {
         $('#item1').trigger(dragstart)
         $('#item2').trigger(dragover)
 
-        assert.ok($('#item2').hasClass('sortable-cursor'))
+        assert.ok(
+            $('#item2').hasClass('sortable-cursor'),
+            'Should set curser on dragover'
+        )
 
         dragleave.target = $('#item2 div')[0]
         $('#item2 div').trigger(dragleave)
 
-        assert.ok($('#item2').hasClass('sortable-cursor'))
+        assert.ok(
+            $('#item2').hasClass('sortable-cursor'),
+            'Should not remove cursor on dragleave event of a child element'
+        )
 
         dragleave.target = $('#item2')[0]
         $('#item2').trigger(dragleave)
 
-        assert.notOk($('#item2').hasClass('sortable-cursor'))
+        assert.notOk(
+            $('#item2').hasClass('sortable-cursor'),
+            'Should remove cursor on dragleave event'
+        )
 
         $('#item2').trigger(dragoverTouch)
 
@@ -194,12 +215,20 @@ $(function () {
 
         $('#item2').trigger(dragend)
 
-        assert.ok($('#container1 .sortable-cursor').length === 0)
+        assert.ok(
+            $('#container1 .sortable-cursor').length === 0,
+            'There should be no cursors after dragend'
+        )
 
         Store.clear()
 
         $('#item2').trigger(dragover)
         $('#item2').trigger(drop)
+
+        assert.notOk(
+            $('#item2').hasClass('sortable-cursor'),
+            'There should be no cursors if there is no widget to drag'
+        )
     })
 
 })

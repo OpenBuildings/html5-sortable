@@ -106,11 +106,13 @@ module.exports = function (grunt) {
             }
         },
 
+        // Tasks for documenation building and publishing
+
         submake: {
-          docs: {
-            'docs': 'html'
-          },
-        },
+            docs: {
+                docs: 'html'
+            }
+        }
     })
 
     grunt.registerTask('docs', ['default', 'submake'])
