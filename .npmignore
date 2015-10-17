@@ -1,7 +1,8 @@
 js/
 .*
 build/
+docs/
 bower.json
-html5-sortable.zip
+clippings-html5-sortable.zip
 CONTRIBUTING.md
 Gruntfile.js

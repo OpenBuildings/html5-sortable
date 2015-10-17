@@ -1,7 +1,7 @@
 {
   "name": "clippings-html5-sortable",
   "homepage": "https://clippings/github.com/html5-sortable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "authors": [
     "Ivan Kerin <ikerin@gmail.com>"
   ],
@@ -21,10 +21,11 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "examples",
+    "docs",
+    "build",
     ".sass-cache",
     "Gruntfile.js",
-    "tests"
+    "js"
   ],
   "dependencies": {
     "jquery": ">= 1.7.0"

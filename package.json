@@ -1,7 +1,7 @@
 {
   "name": "clippings-html5-sortable",
   "license": "BSD-3-Clause",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "jquery": "^1.7, ^2.0"
   },
