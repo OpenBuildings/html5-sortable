@@ -1,22 +1,49 @@
-Html5 Sortable
-==============
+# Html5 Sortable
 
 [![Build Status](https://travis-ci.org/clippings/html5-sortable.svg?branch=master)](https://travis-ci.org/clippings/html5-sortable)
 [![Code Climate](https://codeclimate.com/github/clippings/html5-sortable/badges/gpa.svg)](https://codeclimate.com/github/clippings/html5-sortable)
 [![Test Coverage](https://codeclimate.com/github/clippings/html5-sortable/badges/coverage.svg)](https://codeclimate.com/github/clippings/html5-sortable/coverage)
 
-
 Sort element using native html5 drag and drop
 
-Instalation
------------
+## Instalation
 
-Include javascript file `dist/js/layout-grid.min.js`
+Using [jspm](http://jspm.io/):
 
-For default css include `dist/css/layout-grid.min.css`, but you can modify this or make your own one
+    jspm install npm:clippings-html5-sortable
+
+Using npm:
+
+    npm install clippings-html5-sortable
+
+Manual:
+
+Download [latest release](https://github.com/clippings/html5-sortable/releases/latest)
+
+``` html
+<link rel="stylesheet" type="text/css" href="dist/css/html5-sortable.min.css" />
+<script type="text/javascript" src="dist/js/html5-sortable.min.js"></script>
+```
 
 Usage
 -----
+
+``` html
+<div data-arrange="html5-sortable">
+    <div draggable="true">1</div>
+    <div draggable="true">2</div>
+    <div draggable="true">3</div>
+    <div draggable="true">4</div>
+    <div draggable="true">5</div>
+</div>
+```
+
+![Html5 draggable example](http://imgur.com/3A9mPOG)
+
+Documentation
+-------------
+
+You can read the extensive documentation on http://clippings.github.io/html5-sortable/
 
 License
 -------
