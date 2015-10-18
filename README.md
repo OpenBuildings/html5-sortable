@@ -38,7 +38,7 @@ Usage
 </div>
 ```
 
-[Imgur](http://i.imgur.com/3A9mPOG.png)
+![Imgur](http://i.imgur.com/3A9mPOG.png)
 
 Documentation
 -------------
